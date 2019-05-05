@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.orders{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.order{
+  margin: 30px 0 30px 0 !important;
+  background-color: lightskyblue !important;
+  cursor: default !important;
+}

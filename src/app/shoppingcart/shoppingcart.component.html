@@ -1,0 +1,37 @@
+
+
+<div class="ui middle aligned selection divided list grid">
+  <ng-container *ngFor="let book of books">
+    <ng-container *ngFor="let storedBook of storedBooks">
+      <ng-container *ngIf="book.isbn == storedBook">
+        <ng-container *ngIf="!viewedBooks.includes(book.isbn)">
+            <div class="item three column row">
+              <div class="column">
+                <a class="bs-book-list-item item" [book]="book" [routerLink]="'../books/'+book.isbn"> </a>
+              </div>
+              <div class="column">
+                <button (click)="deleteFromLocalStorage(book.isbn)" class="ui red button">Löschen</button>
+              </div>
+              <div class="column">
+                <div class="row">
+                  <div class="column center aligned">
+                  <button (click)="addBook(book.isbn)" class="ui tiny button" style="margin: 0 !important;" type="button">+</button>
+                    <span style="padding: 20px">{{count(book.isbn)}}</span>
+                  <button (click)="removeBook(book.isbn)" class="ui tiny button" type="button">-</button>
+                </div>
+                </div>
+              </div>
+            </div>
+        </ng-container>
+        {{push(book.isbn)}}
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <br>
+  <br>
+  <br>
+  <button class="ui tiny yellow labeled icon button" style="    margin-left: 20px;" *ngIf="storedBooks != undefined   || storedBooks != null" (click)="isLoggedIn()">
+    <i class="money icon"></i>Bestellen</button>
+
+  <p *ngIf="storedBooks == undefined   || storedBooks == null">Warenkorb ist leer</p>
+</div>
